@@ -2,14 +2,14 @@
 
 兼容代码总结
 ==================
-*[兼容代码](#compatible）
-    *[EventUtil](#eventUtil)
-*[DOM](#dom)
-    *[动态添加脚本](#dynamicScript)
-    *[动态添加样式表](#dynamicCss)
-*[工具代码](#tools)
-    *[序列化表单](#serilizeForm)
-    *[确定网络是否连通](#onlineOrOffline)
+*   [兼容代码](#compatible）
+    *   [EventUtil](#eventUtil)
+*   [DOM](#dom)
+    *   [动态添加脚本](#dynamicScript)
+    *   [动态添加样式表](#dynamicCss)
+*   [工具代码](#tools)
+    *   [序列化表单](#serilizeForm)
+    *   [确定网络是否连通](#onlineOrOffline)
 * * *
 
 
