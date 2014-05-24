@@ -2,9 +2,54 @@
 
 兼容代码总结
 ==================
+*[兼容代码](#compatible）
+    *[EventUtil](#eventUtil)
+*[DOM](#dom)
+    *[动态添加脚本](#dynamicScript)
+    *[动态添加样式表](#dynamicCss)
+*[工具代码](#tools)
+    *[序列化表单](#serilizeForm)
+    *[确定网络是否连通](#onlineOrOffline)
+* * *
 
-#DOM#
-+动态添加脚本
+
+<h2 id="compatible">兼容</h2>
+<h3 id="eventUtil">EvnetUtil</h3>
+    EventUtil = {
+            addHandler:function (ele,type,handle){
+                if(window.addEventListener) {
+                    ele.addEventListener(type,handle,false);
+                }
+                else {
+                    window.attachEvent("on"+type,handle);
+                }
+            },
+            getEvent:function(event) {
+                return event||window.event;
+            },
+            getTarget:function(event){
+                return event.target||event.srcElement;
+            },
+            preventDefault:function(event){
+                if(event.preventDefault) {
+                    event.preventDefault();
+                }
+                else {
+                    event.returnValue = false;
+                }
+            },
+            stopPropagation:function(event) {
+                if(event.stopPropagation) {
+                    event.stopPropagation();
+                }
+                else{
+                    event.cancelBubble = true;
+                }
+            }
+        }
+
+<h2 id="dom">DOM</h2>
+<h3 id="dynamicScript">动态添加脚本</h3>
 
     //url法
     var script = document.createElement("script");
@@ -23,7 +68,7 @@
     }
     document.body.appendChild(script);
 
-+动态添加样式表
+<h3 id="dynamicCss">动态添加样式表</h3>
 
     //url法
     var link = document.createElement("link");
@@ -42,43 +87,10 @@
     }
     document.getElementsByTagName("head")[0].appendChild(style);
 
-#DOM#
-    
-    EventUtil = {
-        addHandler:function (ele,type,handle){
-            if(window.addEventListener) {
-                ele.addEventListener(type,handle,false);
-            }
-            else {
-                window.attachEvent("on"+type,handle);
-            }
-        },
-        getEvent:function(event) {
-            return event||window.event;
-        },
-        getTarget:function(event){
-            return event.target||event.srcElement;
-        },
-        preventDefault:function(event){
-            if(event.preventDefault) {
-                event.preventDefault();
-            }
-            else {
-                event.returnValue = false;
-            }
-        },
-        stopPropagation:function(event) {
-            if(event.stopPropagation) {
-                event.stopPropagation();
-            }
-            else{
-                event.cancelBubble = true;
-            }
-        }
-    }
 
 
-#序列化表单
+<h2 id="tools">工具函数</h2>
+<h3 id="serializeForm">序列化表单</h3>
      function serialize(form){        
         var parts = [],
             field = null,
@@ -136,7 +148,7 @@
         return parts.join("&");
     }
 
-#确定网络是否连通
+<h3 id="onlineOrOffline">确定网络是否连通</h3>
      EventUtil.addHandler(window, "online", function(){
             document.getElementById("status").innerHTML = "Online";
         });
@@ -144,7 +156,3 @@
             document.getElementById("status").innerHTML = "Offline";
         });
 
-
-
-
-[id]你好
