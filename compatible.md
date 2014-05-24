@@ -4,6 +4,11 @@
 ==================
 *   [兼容代码](#compatible)
     *   [EventUtil](#eventUtil)
+    *   [表单](#form)
+        *   [阻止默认提交表单](#preventDefaultSubmitForm)
+        *   [阻止默认重置交表单](#preventDefaultResetForm)
+        *   [获取选择的文本](#getSelectedText)
+        *   [选择部分文本](#selectText)
 *   [DOM](#dom)
     *   [动态添加脚本](#dynamicScript)
     *   [动态添加样式表](#dynamicCss)
@@ -47,6 +52,45 @@
                 }
             }
         }
+
+<h3 id="form">表单</h3>
+<h4 id="preventDefaultSubmitForm">阻止默认提交表单</h4>
+    var forms = document.getElementById('myFrom');
+     EventUtil.addHandler(form,"submit",function(){
+        event = EventUtil.getEvent(event);
+        EventUtil.preventDefault(event);
+    })
+
+<h4 id="preventDefaultResetForm">阻止默认重置表单</h4>
+    var forms = document.getElementById('myFrom');
+     EventUtil.addHandler(form,"reset",function(){
+        event = EventUtil.getEvent(event);
+        EventUtil.preventDefault(event);
+    })
+
+<h4 id="getSelectedText">取得选择的文本</h4>
+    function getSelectedText(textbox){
+                if (typeof textbox.selectionStart == "number"){
+                    return textbox.value.substring(textbox.selectionStart, 
+                            textbox.selectionEnd);       //firefox         
+                } else if (document.selection){
+                    return document.selection.createRange().text;   //IE
+                }
+            }
+
+<h4 id="selectText">选择部分文本</h4>
+    function selectText(textbox, startIndex, stopIndex){
+        if (textbox.setSelectionRange){             //w3c
+            textbox.setSelectionRange(startIndex, stopIndex);  
+        } else if (textbox.createTextRange){       //IE
+            var range = textbox.createTextRange();
+            range.collapse(true);
+            range.moveStart("character", startIndex);
+            range.moveEnd("character", stopIndex - startIndex);
+            range.select();                    
+        }
+        textbox.focus();
+    }
 
 <h2 id="dom">DOM</h2>
 <h3 id="dynamicScript">动态添加脚本</h3>
