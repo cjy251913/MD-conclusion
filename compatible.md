@@ -2,7 +2,7 @@
 
 兼容代码总结
 ==================
-*   [兼容代码](#compatible）
+*   [兼容代码](#compatible)
     *   [EventUtil](#eventUtil)
 *   [DOM](#dom)
     *   [动态添加脚本](#dynamicScript)
