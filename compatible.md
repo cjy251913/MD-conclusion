@@ -134,7 +134,7 @@
 
 
 <h2 id="tools">工具函数</h2>
-<h3 id="serializeForm">序列化表单</h3>
+<h3 id="serilizeForm">序列化表单</h3>
      function serialize(form){        
         var parts = [],
             field = null,
