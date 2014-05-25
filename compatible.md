@@ -15,6 +15,7 @@
 *   [工具代码](#tools)
     *   [序列化表单](#serilizeForm)
     *   [确定网络是否连通](#onlineOrOffline)
+
 * * *
 
 
@@ -52,7 +53,7 @@
                 }
             }
         }
-
+***
 <h3 id="form">表单</h3>
 <h4 id="preventDefaultSubmitForm">阻止默认提交表单</h4>
     var forms = document.getElementById('myFrom');
@@ -91,6 +92,7 @@
         }
         textbox.focus();
     }
+***
 
 <h2 id="dom">DOM</h2>
 <h3 id="dynamicScript">动态添加脚本</h3>
@@ -130,7 +132,7 @@
         style.stylesheet.cssText = "body{color:red;}";   //IE
     }
     document.getElementsByTagName("head")[0].appendChild(style);
-
+***
 
 
 <h2 id="tools">工具函数</h2>
